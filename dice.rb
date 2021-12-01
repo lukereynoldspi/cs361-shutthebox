@@ -1,6 +1,6 @@
 class Dice
 
-    def initialize(sides: 6)
+    def initialize(sides: rand(4.. 100))
         @sides = sides
     end
 
