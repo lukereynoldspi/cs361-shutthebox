@@ -1,35 +1,23 @@
 
 require_relative 'game'
+require_relative 'box'
+require_relative 'dice'
+require_relative 'tile'
 
-game = Game.new
-game.play
-
-number_of_dice = 4
 number_of_tiles = 9
+number_of_dice = 2
 
-box = []
+
+tiles = []
 number_of_tiles.times do |i|
-    box << Tile.new(i+1)
+    tiles << Tile.new(i + 1)
 end
+box = Box.new(tiles)
 
 dice = []
 number_of_dice.times do |i|
     dice << Dice.new
 end
 
-sum = 0
-print "Current roll: "
-number_of_dice.times do |i|
-    roll = dice[i].roll
-    print roll, " "
-    sum += roll
-end
-puts "\n"
-
-box.length.times do |i|
-    print "|#{box[i].number}"
-end
-puts "|\n Enter the tabs you wish to flip, separated by a space: "
-
-tabs = gets 
-tabs = tabs.split
+game = Game.new(box, dice)
+game.play
