@@ -4,6 +4,7 @@ class Game
     def initialize(box, dice)
         @box = box
         @dice = dice
+        @sum = 0
     end
 
     def greeting
@@ -11,12 +12,11 @@ class Game
     end
 
     def print_roll
-        sum = 0
         print "Current roll: "
         @dice.length.times do |i|
             roll = @dice[i].roll
             print roll, " "
-            sum += roll
+            @sum += roll
         end
         print "\n"
     end
@@ -28,10 +28,23 @@ class Game
         print "|\n"
     end
 
+    def get_player_input
+        puts "Enter the tabs you wish to flip, separated by a space: "
+        tabs = gets 
+        tabs = tabs.split
+        tabs.length.times do |i|
+            tabs[i] = tabs[i].to_i
+        end
+        if tabs.sum != @sum then
+            puts "Tabs sum to incorrect number"
+        end
+    end
+
     def play
         greeting
         print_roll
         print_box
+        get_player_input
     end
 end
 
