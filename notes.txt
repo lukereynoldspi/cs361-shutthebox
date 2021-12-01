@@ -1,0 +1,12 @@
+two diffiferent classes (box/dice)
+
+human interaction class (user input)
+
+implement statically at first
+
+opening prompt
+
+closing prompt
+
+display numbers of tiles
+
